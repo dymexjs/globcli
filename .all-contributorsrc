@@ -1,0 +1,8 @@
+{
+    "projectName": "Project Name",
+    "projectOwner" : "Project Owner",
+    "files": ["README.md"],
+    "imageSize": 50,
+    "repoType": "github",
+    "repoHost": "https://github.com"
+}
