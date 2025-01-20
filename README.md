@@ -1,30 +1,81 @@
-# Dymexjs - ~~Name of the project~~
+# Dymexjs - @dymexjs/globcli
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/14dbc81adf924a61a80e7f0c95cad6c1)](https://app.codacy.com/gh/dymexjs/globcli/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![Released under the MIT license.](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
-[![All Contributors][all-contributors-badge]](#contributors-)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](./CODE_OF_CONDUCT.md)
 [![PRs welcome!](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
-[![Code of Conduct][coc-badge]][coc]
+[![All Contributors](https://img.shields.io/github/all-contributors/dymexjs/globcli?color=ee8449&style=flat-square)](#contributors-)
 
-~~Description of the project~~
+Same as [globstar](https://www.npmjs.com/package/globstar) but newer
 
+Run programs with glob support, especially on Windows within npm scripts.
+
+<!-- omit in toc -->
 ## Table of Contents
 
-- [Dymexjs - ~~Name of the project~~](#dymexjs---name-of-the-project)
-  - [Table of Contents](#table-of-contents)
+- [Dymexjs - @dymexjs/globcli](#dymexjs---dymexjsglobcli)
+  - [Install](#install)
   - [Usage](#usage)
-  - [Documentation](#documentation)
+    - [Npm Scripts](#npm-scripts)
+  - [Options](#options)
   - [Code of Conduct](#code-of-conduct)
   - [How to Contribute](#how-to-contribute)
   - [License 📝](#license-)
   - [Contributors ✨](#contributors-)
 
+## Install
+
+```sh
+npm install @dymexjs/globcli
+
+or
+
+npm install @dymexjs/globcli --global
+```
+
 ## Usage
 
-~~Usage description~~
+```sh
+> globcli -- echo "./REA*.md"
+README.md
+```
 
-## Documentation
+Please note the `--` and that globcli uses forward slashes.
 
-~~Small documentation description~~
+Under the hood globcli uses [yargs](https://www.npmjs.com/package/yargs) to parse cli arguments and [glob](https://www.npmjs.com/package/glob) to parse the patterns.
+
+It also uses [debug](https://www.npmjs.com/package/debug) for debugging purposes, to see the debug messages just set `DEBUG` env var to `DEBUG=dymexjs:globcli`
+
+### Npm Scripts
+
+```sh
+npm install @dymexjs/globcli -D
+```
+
+```json
+"scripts": {
+  "test": "globcli -- tsx --test \"tests/**/*.test.ts\"",
+}
+```
+
+## Options
+
+```sh
+Run programs with globcli support.
+
+Usage: index.js [OPTION]... -- COMMAND [ARG]...
+Note the -- between the index.js OPTIONS and the COMMAND and its argumen
+ts
+
+Options:
+      --version  Show version number                                   [boolean]
+      --nodir    glob patterns do not match directories, only files    [boolean]
+  -i, --ignore   add glob pattern to exclude from matches                [array]
+  -n, --node     same as `--ignore "node_modules/**"`                  [boolean]
+      --help     Show help                                             [boolean]
+
+Use 'DEBUG=dymexjs:globcli' to see debug messages
+```
 
 ## Code of Conduct
 
@@ -50,9 +101,3 @@ Licensed under the [MIT License](./LICENSE).
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
-
-~~Change links~~
-
-[all-contributors-badge]: <https://img.shields.io/github/all-contributors/{OWNER}/{REPO}?color=orange&style=flat-square>
-[coc]: <./CODE_OF_CONDUCT.md>
-[coc-badge]: <https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square>

@@ -1,41 +1,31 @@
 {
-  "name": "~~name of the project~~",
+  "name": "@dymexjs/globcli",
   "version": "0.0.1",
-  "description": "~~description of the project~~",
+  "description": "Same as globcli but newer",
   "publishConfig": {
     "access": "public"
   },
   "type": "module",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/types/index.d.ts",
-  "exports": {
-    "require": {
-      "types": "./dist/types/index.d.ts",
-      "default": "./dist/cjs/index.js"
-    },
-    "import": {
-      "types": "./dist/types/index.d.ts",
-      "default": "./dist/esm/index.js"
-    }
+  "bin": {
+    "globcli": "./bin/index.js"
   },
+  "main": "./bin/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OWNER/repo.git"
+    "url": "git+https://github.com/dymexjs/globcli.git"
   },
   "bugs": {
-    "url": "https://github.com/OWNER/repo/issues"
+    "url": "https://github.com/dymexjs/globcli/issues"
   },
   "scripts": {
-    "build:cjs": "npx tsc -p tsconfig.cjs.json && echo {\"type\": \"commonjs\"} > dist/cjs/package.json",
-    "build:esm": "npx tsc -p tsconfig.esm.json && echo {\"type\": \"module\"} > dist/esm/package.json",
-    "build:types": "npx tsc -p tsconfig.types.json",
-    "build": "npm run clean && npm run build:cjs && npm run build:esm && npm run build:types",
-    "clean": "npx rimraf dist",
+    "build:bin": "npx tsc -p tsconfig.json",
+    "build": "npm run clean && npm run build:bin",
+    "clean": "npx rimraf bin",
     "lint": "eslint",
-    "test": "globstar -- tsx --test \"tests/**/*.test.ts\"",
-    "test:coverage": "globstar -- tsx --experimental-test-coverage --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=lcov.info --test \"tests/**/*.test.ts\"",
-    "test:watch": "globstar -- tsx --test --watch \"tests/**/*.test.ts\"",
+    "test": "tsx --test \"tests/index.test.ts\"",
+    "test:build": "SET DEBUG=dymexjs:globcli & npm run build && tsx --test \"tests/index.test.ts\"",
+    "test:coverage": "tsx --experimental-test-coverage --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=lcov.info --test \"tests/index.test.ts\"",
+    "test:watch": "tsx --test --watch \"tests/index.test.ts\"",
     "format": "prettier --config .prettierrc \"src/**/*.ts\" \"tests/**/*.ts\" --write",
     "prepare": "npm run build",
     "preversion": "npm run format && npm run lint && npm test",
@@ -44,12 +34,12 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.10.0",
+    "@types/debug": "^4.1.12",
     "@types/node": "^22.10.5",
+    "@types/yargs": "^17.0.33",
     "eslint": "^9.17.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-security": "^3.0.1",
-    "globals": "^15.14.0",
-    "globstar": "^1.0.0",
     "prettier": "3.3.3",
     "rimraf": "^5.0.10",
     "tsx": "^4.19.2",
@@ -57,8 +47,13 @@
     "typescript-eslint": "^8.19.1"
   },
   "author": {
-    "name":"~~name of the author~~",
+    "name": "João Parreira",
     "email": "dymexjs@gmail.com"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "debug": "^4.4.0",
+    "glob": "^10.4.5",
+    "yargs": "^17.7.2"
+  }
 }
