@@ -9,7 +9,7 @@ export default [
     files: ["**/*.{js,mjs,cjs,ts}"],
   },
   {
-    ignores: ["dist"],
+    ignores: ["bin"],
   },
   pluginJs.configs.recommended,
   ...tseslint.configs.strict,
