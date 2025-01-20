@@ -64,8 +64,8 @@ describe("globcli", () => {
   test("should respect --ignore", async () => {
     const child = runglobcli(["--ignore", "tests/index.test.ts", "--", "echo", "tests/*.ts", "src/*.ts"]);
     const output = await awaitOutput(child);
-    assert.doesNotMatch(output, /tests\\index\.test\.ts/);
-    assert.match(output, /src\\index\.ts/);
+    assert.doesNotMatch(output, /tests\/index\.test\.ts/);
+    assert.match(output, /src\/index\.ts/);
   });
 
   test("should respect --node", async () => {

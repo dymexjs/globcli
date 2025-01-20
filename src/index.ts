@@ -41,12 +41,17 @@ function parseYargs(args: Array<string>) {
 }
 
 function parseGlobOpts(args: ReturnType<typeof parseYargs>) {
-  const globOpts: Record<string, unknown> = {};
+  const globOpts: Record<string, unknown> = {
+    nocase: true,
+    posix: true,
+  };
+
   if (args.node) {
     args.ignore = args.ignore || [];
     args.ignore.push("node_modules/**");
     delete args.node;
   }
+
   const ignoreKeys = ["$0", "_", "--"];
   for (const [key, value] of Object.entries(args)) {
     if (!ignoreKeys.includes(key)) {
@@ -100,8 +105,11 @@ export function main(args: Array<string>) {
     const globResults = parseGlobArgs(cmdArgs.args, globOpts);
     debug("glob results", globResults);
 
-    const status = spawnAction(cmdArgs.cmd, globResults).status;
-    exit(status);
+    const result = spawnAction(cmdArgs.cmd, globResults);
+    if (result.error) {
+      console.error(result.error);
+    }
+    exit(result.status);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     console.error(err.message);
