@@ -1,6 +1,7 @@
 # Dymexjs - @dymexjs/globcli
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/14dbc81adf924a61a80e7f0c95cad6c1)](https://app.codacy.com/gh/dymexjs/globcli/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/14dbc81adf924a61a80e7f0c95cad6c1)](https://app.codacy.com/gh/dymexjs/globcli/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 [![Released under the MIT license.](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](./CODE_OF_CONDUCT.md)
 [![PRs welcome!](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
