@@ -1,6 +1,6 @@
 {
   "name": "@dymexjs/globcli",
-  "version": "v0.0.2",
+  "version": "0.0.3",
   "description": "Same as globcli but newer",
   "publishConfig": {
     "access": "public"
